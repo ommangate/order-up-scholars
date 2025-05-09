@@ -4,10 +4,14 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const [heroImageLoaded, setHeroImageLoaded] = React.useState(false);
+  const [canteenImage1Loaded, setCanteenImage1Loaded] = React.useState(false);
+  const [canteenImage2Loaded, setCanteenImage2Loaded] = React.useState(false);
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-144px)]">
@@ -44,11 +48,23 @@ const LandingPage: React.FC = () => {
             <div className="absolute -top-4 -left-4 w-64 h-64 bg-canteen-orange/10 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-canteen-teal/10 rounded-full blur-3xl"></div>
             <div className="relative bg-white rounded-xl overflow-hidden shadow-xl p-4 border">
-              <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden">
+              <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden bg-gray-100">
+                {!heroImageLoaded && (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Skeleton className="w-full h-full" />
+                  </div>
+                )}
                 <img 
-                  src="public/lovable-uploads/360a4112-52fd-464a-b40f-b775ae970bb1.png" 
+                  src="public/lovable-uploads/387eda7b-a4a5-43c7-a3ab-48e9026d1af8.png" 
                   alt="Delicious food from campus canteen" 
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${!heroImageLoaded ? 'hidden' : ''}`}
+                  onLoad={() => setHeroImageLoaded(true)}
+                  onError={(e) => {
+                    // Fallback to previous image if new one fails
+                    const target = e.target as HTMLImageElement;
+                    target.src = "public/lovable-uploads/360a4112-52fd-464a-b40f-b775ae970bb1.png";
+                    setHeroImageLoaded(true);
+                  }}
                 />
               </div>
               <div className="space-y-2">
@@ -114,11 +130,18 @@ const LandingPage: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-            <div className="h-48 bg-gray-200 relative">
+            <div className="h-48 bg-gray-100 relative">
+              {!canteenImage1Loaded && <Skeleton className="w-full h-full" />}
               <img 
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                src="public/lovable-uploads/f2a96351-10fb-46bd-a174-58f12fcf3b71.png"
                 alt="The Hungry Scholar Canteen"
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${!canteenImage1Loaded ? 'hidden' : ''}`}
+                onLoad={() => setCanteenImage1Loaded(true)}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                  setCanteenImage1Loaded(true);
+                }}
               />
             </div>
             <div className="p-6">
@@ -131,11 +154,18 @@ const LandingPage: React.FC = () => {
           </div>
           
           <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-            <div className="h-48 bg-gray-200 relative">
+            <div className="h-48 bg-gray-100 relative">
+              {!canteenImage2Loaded && <Skeleton className="w-full h-full" />}
               <img 
                 src="public/lovable-uploads/0b17af70-df66-409c-a87b-346e67d8d48b.png" 
                 alt="Main Campus Canteen"
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${!canteenImage2Loaded ? 'hidden' : ''}`}
+                onLoad={() => setCanteenImage2Loaded(true)}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80";
+                  setCanteenImage2Loaded(true);
+                }}
               />
             </div>
             <div className="p-6">
