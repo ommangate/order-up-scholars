@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,6 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { FoodItem, Canteen, FoodCategory } from '@/services/api';
+import { Image } from 'lucide-react';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
@@ -49,16 +50,26 @@ const FoodItemForm: React.FC<FoodItemFormProps> = ({
       categoryId: foodItem?.categoryId || '',
       canteenId: foodItem?.canteenId || '',
       available: foodItem?.available ?? true,
-      image: foodItem?.image || '/placeholder.svg',
+      image: foodItem?.image || '',
     },
   });
   
   const handleSubmit = async (data: FormValues) => {
     try {
       if (isEditing && foodItem) {
-        await onSubmit({ ...foodItem, ...data });
+        // When editing, preserve the ID
+        await onSubmit({ ...data, id: foodItem.id });
       } else {
-        await onSubmit(data);
+        // When creating, submit all required fields for a new food item
+        await onSubmit({
+          name: data.name,
+          description: data.description,
+          price: data.price,
+          categoryId: data.categoryId,
+          canteenId: data.canteenId,
+          available: data.available,
+          image: data.image,
+        });
       }
       form.reset();
     } catch (error) {
@@ -117,9 +128,41 @@ const FoodItemForm: React.FC<FoodItemFormProps> = ({
                       step="0.01"
                       placeholder="0.00" 
                       {...field}
-                      onChange={(e) => field.onChange(parseFloat(e.target.value))}
                     />
                   </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Image URL</FormLabel>
+                  <FormControl>
+                    <div className="flex gap-2">
+                      <Input 
+                        placeholder="Image URL for the food item" 
+                        {...field}
+                        value={field.value || ''}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        onClick={() => {
+                          window.open(field.value || '/placeholder.svg', '_blank');
+                        }}
+                      >
+                        <Image size={18} />
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormDescription>
+                    Paste a direct URL to an image
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -203,6 +246,23 @@ const FoodItemForm: React.FC<FoodItemFormProps> = ({
                 </FormItem>
               )}
             />
+
+            {form.watch('image') && (
+              <div className="mt-4 border rounded-md overflow-hidden">
+                <p className="text-sm font-medium p-2 bg-gray-50 border-b">Image Preview</p>
+                <div className="h-40 bg-gray-100 flex items-center justify-center">
+                  <img 
+                    src={form.watch('image') || '/placeholder.svg'} 
+                    alt="Food item preview" 
+                    className="max-h-full object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/placeholder.svg';
+                    }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
         

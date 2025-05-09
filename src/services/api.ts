@@ -1,4 +1,3 @@
-
 import { toast } from "@/components/ui/sonner";
 
 // Types for our application
@@ -86,7 +85,7 @@ const foodItems: FoodItem[] = [
     categoryId: '1',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1628294895950-9805252327bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '2',
@@ -96,7 +95,7 @@ const foodItems: FoodItem[] = [
     categoryId: '1',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '3',
@@ -106,7 +105,7 @@ const foodItems: FoodItem[] = [
     categoryId: '1',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '4',
@@ -116,7 +115,7 @@ const foodItems: FoodItem[] = [
     categoryId: '1',
     canteenId: '2',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   
   // Hot Drinks
@@ -128,7 +127,7 @@ const foodItems: FoodItem[] = [
     categoryId: '3',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '6',
@@ -138,7 +137,7 @@ const foodItems: FoodItem[] = [
     categoryId: '3',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   
   // Shakes
@@ -150,7 +149,7 @@ const foodItems: FoodItem[] = [
     categoryId: '4',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '8',
@@ -160,7 +159,7 @@ const foodItems: FoodItem[] = [
     categoryId: '4',
     canteenId: '2',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   
   // Lunch items
@@ -172,7 +171,7 @@ const foodItems: FoodItem[] = [
     categoryId: '7',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '10',
@@ -182,7 +181,7 @@ const foodItems: FoodItem[] = [
     categoryId: '7',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   
   // Evening Snacks
@@ -194,7 +193,7 @@ const foodItems: FoodItem[] = [
     categoryId: '8',
     canteenId: '1',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
   {
     id: '12',
@@ -204,7 +203,7 @@ const foodItems: FoodItem[] = [
     categoryId: '8',
     canteenId: '2',
     available: true,
-    image: '/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1589286275712-40a7defe7f14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
   },
 ];
 
