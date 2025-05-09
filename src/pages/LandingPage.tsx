@@ -44,8 +44,12 @@ const LandingPage: React.FC = () => {
             <div className="absolute -top-4 -left-4 w-64 h-64 bg-canteen-orange/10 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-canteen-teal/10 rounded-full blur-3xl"></div>
             <div className="relative bg-white rounded-xl overflow-hidden shadow-xl p-4 border">
-              <div className="aspect-[4/3] bg-gray-200 rounded-lg mb-4">
-                <div className="w-full h-full flex items-center justify-center text-gray-500">Food Image</div>
+              <div className="aspect-[4/3] rounded-lg mb-4 overflow-hidden">
+                <img 
+                  src="public/lovable-uploads/360a4112-52fd-464a-b40f-b775ae970bb1.png" 
+                  alt="Delicious food from campus canteen" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="space-y-2">
                 <div className="h-6 bg-gray-100 rounded-md w-3/4"></div>
@@ -110,8 +114,12 @@ const LandingPage: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-            <div className="h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-              Canteen Image
+            <div className="h-48 bg-gray-200 relative">
+              <img 
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                alt="The Hungry Scholar Canteen"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2">The Hungry Scholar</h3>
@@ -123,8 +131,12 @@ const LandingPage: React.FC = () => {
           </div>
           
           <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-            <div className="h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-              Canteen Image
+            <div className="h-48 bg-gray-200 relative">
+              <img 
+                src="public/lovable-uploads/0b17af70-df66-409c-a87b-346e67d8d48b.png" 
+                alt="Main Campus Canteen"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2">Main Canteen</h3>

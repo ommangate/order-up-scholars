@@ -58,7 +58,16 @@ const FoodItemForm: React.FC<FoodItemFormProps> = ({
     try {
       if (isEditing && foodItem) {
         // When editing, preserve the ID
-        await onSubmit({ ...data, id: foodItem.id });
+        await onSubmit({ 
+          id: foodItem.id,
+          name: data.name,
+          description: data.description,
+          price: data.price,
+          categoryId: data.categoryId,
+          canteenId: data.canteenId,
+          available: data.available,
+          image: data.image 
+        });
       } else {
         // When creating, submit all required fields for a new food item
         await onSubmit({
